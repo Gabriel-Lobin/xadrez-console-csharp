@@ -10,18 +10,22 @@ namespace xadrez_console
         {
             try
             {
-            Console.OutputEncoding = System.Text.Encoding.UTF8;
-                PosicaoXadrez pos = new PosicaoXadrez('c', 7);
+                Console.OutputEncoding = System.Text.Encoding.UTF8;
+                Tabuleiro tabuleiro = new Tabuleiro(8,8);
 
-                Console.WriteLine(pos);
+                tabuleiro.ColocarPeca(new Torre(tabuleiro, Cor.Preta), new Posicao(0,0));
+                tabuleiro.ColocarPeca(new Torre(tabuleiro, Cor.Preta), new Posicao(1,3));
+                tabuleiro.ColocarPeca(new Rei(tabuleiro, Cor.Preta), new Posicao(2,4));
+                tabuleiro.ColocarPeca(new Rei(tabuleiro, Cor.Branca), new Posicao(3,5));
 
-                Console.WriteLine(pos.ToPosicao());
+                Tela.ImprimirTabuleiro(tabuleiro);
 
             }
             catch (TabuleiroException erro)
             {
                 Console.WriteLine(erro.Message);
             }
+
             Console.WriteLine();
         }
     }
