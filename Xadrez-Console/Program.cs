@@ -6,10 +6,12 @@ namespace xadrez_console
     {
         static void Main(string[] args)
         {
+            Console.OutputEncoding = System.Text.Encoding.UTF8;
             Tabuleiro tabuleiro = new Tabuleiro(8,8);
 
-            Console.WriteLine(tabuleiro);
-            
+            Tela.imprimirTabuleiro(tabuleiro);
+
+            Console.WriteLine();
         }
     }
 }
