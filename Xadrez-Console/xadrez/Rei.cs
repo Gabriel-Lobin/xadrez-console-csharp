@@ -26,63 +26,63 @@ namespace xadrez_console.xadrez
         {
             bool[,] matriz = new bool[tabuleiro.linhas, tabuleiro.colunas];
 
-            Posicao posicao = new Posicao(0, 0);
+            Posicao posicaoInicial = new Posicao(0, 0);
 
             // N
-            posicao.DefinirValores(posicao.linha - 1, posicao.coluna);
+            posicaoInicial.DefinirValores(posicao.linha - 1, posicao.coluna);
 
-            if (tabuleiro.PosicaoValida(posicao) && PodeMover(posicao))
+            if (tabuleiro.PosicaoValida(posicaoInicial) && PodeMover(posicaoInicial))
             {
-                matriz[posicao.linha, posicao.coluna] = true;
+                matriz[posicaoInicial.linha, posicaoInicial.coluna] = true;
             }
             // NE
-            posicao.DefinirValores(posicao.linha - 1, posicao.coluna + 1);
+            posicaoInicial.DefinirValores(posicao.linha - 1, posicao.coluna + 1);
 
-            if (tabuleiro.PosicaoValida(posicao) && PodeMover(posicao))
+            if (tabuleiro.PosicaoValida(posicaoInicial) && PodeMover(posicaoInicial))
             {
-                matriz[posicao.linha, posicao.coluna] = true;
+                matriz[posicaoInicial.linha, posicaoInicial.coluna] = true;
             }
             // L
-            posicao.DefinirValores(posicao.linha, posicao.coluna + 1);
+            posicaoInicial.DefinirValores(posicao.linha, posicao.coluna + 1);
 
-            if (tabuleiro.PosicaoValida(posicao) && PodeMover(posicao))
+            if (tabuleiro.PosicaoValida(posicaoInicial) && PodeMover(posicaoInicial))
             {
-                matriz[posicao.linha, posicao.coluna] = true;
+                matriz[posicaoInicial.linha, posicaoInicial.coluna] = true;
             }
             // SE
-            posicao.DefinirValores(posicao.linha + 1, posicao.coluna + 1);
+            posicaoInicial.DefinirValores(posicao.linha + 1, posicao.coluna + 1);
 
-            if (tabuleiro.PosicaoValida(posicao) && PodeMover(posicao))
+            if (tabuleiro.PosicaoValida(posicaoInicial) && PodeMover(posicaoInicial))
             {
-                matriz[posicao.linha, posicao.coluna] = true;
+                matriz[posicaoInicial.linha, posicaoInicial.coluna] = true;
             }
             // S
-            posicao.DefinirValores(posicao.linha + 1, posicao.coluna);
+            posicaoInicial.DefinirValores(posicao.linha + 1, posicao.coluna);
 
-            if (tabuleiro.PosicaoValida(posicao) && PodeMover(posicao))
+            if (tabuleiro.PosicaoValida(posicaoInicial) && PodeMover(posicaoInicial))
             {
-                matriz[posicao.linha, posicao.coluna] = true;
+                matriz[posicaoInicial.linha, posicaoInicial.coluna] = true;
             }
             // SO
-            posicao.DefinirValores(posicao.linha + 1, posicao.coluna - 1);
+            posicaoInicial.DefinirValores(posicao.linha + 1, posicao.coluna - 1);
 
-            if (tabuleiro.PosicaoValida(posicao) && PodeMover(posicao))
+            if (tabuleiro.PosicaoValida(posicaoInicial) && PodeMover(posicaoInicial))
             {
-                matriz[posicao.linha, posicao.coluna] = true;
+                matriz[posicaoInicial.linha, posicaoInicial.coluna] = true;
             }
             // O
-            posicao.DefinirValores(posicao.linha, posicao.coluna - 1);
+            posicaoInicial.DefinirValores(posicao.linha, posicao.coluna - 1);
 
-            if (tabuleiro.PosicaoValida(posicao) && PodeMover(posicao))
+            if (tabuleiro.PosicaoValida(posicaoInicial) && PodeMover(posicaoInicial))
             {
-                matriz[posicao.linha, posicao.coluna] = true;
+                matriz[posicaoInicial.linha, posicaoInicial.coluna] = true;
             }
             // NO 
-            posicao.DefinirValores(posicao.linha - 1, posicao.coluna - 1);
+            posicaoInicial.DefinirValores(posicao.linha - 1, posicao.coluna - 1);
 
-            if (tabuleiro.PosicaoValida(posicao) && PodeMover(posicao))
+            if (tabuleiro.PosicaoValida(posicaoInicial) && PodeMover(posicaoInicial))
             {
-                matriz[posicao.linha, posicao.coluna] = true;
+                matriz[posicaoInicial.linha, posicaoInicial.coluna] = true;
             }
 
             return matriz;

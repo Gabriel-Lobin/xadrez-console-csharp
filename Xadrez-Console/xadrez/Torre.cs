@@ -25,62 +25,66 @@ namespace xadrez_console.xadrez
         {
             bool[,] matriz = new bool[this.tabuleiro.linhas, this.tabuleiro.colunas];
 
-            Posicao posicao = new Posicao(0, 0);
+            Posicao posicaoInicial = new Posicao(0, 0);
 
             // N
-            posicao.DefinirValores(posicao.linha - 1, posicao.coluna);
+            posicaoInicial.DefinirValores(posicao.linha - 1, posicao.coluna);
 
-            while (this.tabuleiro.PosicaoValida(posicao) && PodeMover(posicao))
+            while (this.tabuleiro.PosicaoValida(posicaoInicial) && PodeMover(posicaoInicial))
             {
-                matriz[posicao.linha, posicao.coluna] = true;
-                if (this.tabuleiro.peca(posicao) != null && this.tabuleiro.peca(posicao).cor != this.cor)
+                matriz[posicaoInicial.linha, posicaoInicial.coluna] = true;
+
+                if (this.tabuleiro.peca(posicaoInicial) != null && this.tabuleiro.peca(posicaoInicial).cor != this.cor)
                 {
                     break;
                 }
 
-                posicao.linha -= 1;
+                posicaoInicial.linha -= 1;
             }
 
             // S
 
-            posicao.DefinirValores(posicao.linha + 1, posicao.coluna);
+            posicaoInicial.DefinirValores(posicao.linha + 1, posicao.coluna);
 
-            while (this.tabuleiro.PosicaoValida(posicao) && PodeMover(posicao))
+            while (this.tabuleiro.PosicaoValida(posicaoInicial) && PodeMover(posicaoInicial))
             {
-                matriz[posicao.linha, posicao.coluna] = true;
-                if (this.tabuleiro.peca(posicao) != null && this.tabuleiro.peca(posicao).cor != this.cor)
+                matriz[posicaoInicial.linha, posicaoInicial.coluna] = true;
+
+                if (this.tabuleiro.peca(posicaoInicial) != null && this.tabuleiro.peca(posicaoInicial).cor != this.cor)
                 {
                     break;
                 }
 
-                posicao.linha += 1;
+                posicaoInicial.linha += 1;
             }
 
             // L 
-            posicao.DefinirValores(posicao.linha, posicao.coluna + 1);
+            posicaoInicial.DefinirValores(posicao.linha, posicao.coluna + 1);
 
-            while (this.tabuleiro.PosicaoValida(posicao) && PodeMover(posicao))
+            while (this.tabuleiro.PosicaoValida(posicaoInicial) && PodeMover(posicaoInicial))
             {
-                matriz[posicao.linha, posicao.coluna] = true;
-                if (this.tabuleiro.peca(posicao) != null && this.tabuleiro.peca(posicao).cor != this.cor)
+                matriz[posicaoInicial.linha, posicaoInicial.coluna] = true;
+
+                if (this.tabuleiro.peca(posicaoInicial) != null && this.tabuleiro.peca(posicaoInicial).cor != this.cor)
                 {
                     break;
                 }
 
-                posicao.coluna += 1;
+                posicaoInicial.coluna += 1;
             }
             // O 
-            posicao.DefinirValores(posicao.linha, posicao.coluna - 1);
+            posicaoInicial.DefinirValores(posicao.linha, posicao.coluna - 1);
 
-            while (this.tabuleiro.PosicaoValida(posicao) && PodeMover(posicao))
+            while (this.tabuleiro.PosicaoValida(posicaoInicial) && PodeMover(posicaoInicial))
             {
-                matriz[posicao.linha, posicao.coluna] = true;
-                if (this.tabuleiro.peca(posicao) != null && this.tabuleiro.peca(posicao).cor != this.cor)
+                matriz[posicaoInicial.linha, posicaoInicial.coluna] = true;
+
+                if (this.tabuleiro.peca(posicaoInicial) != null && this.tabuleiro.peca(posicaoInicial).cor != this.cor)
                 {
                     break;
                 }
 
-                posicao.coluna -= 1;
+                posicaoInicial.coluna -= 1;
             }
 
             return matriz;

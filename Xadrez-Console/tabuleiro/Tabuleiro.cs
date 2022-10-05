@@ -16,12 +16,12 @@ namespace xadrez_console.tabuleiro
         }
         public Peca peca(int linha, int coluna)
         {
-            return this.pecas[linha, coluna];
+            return pecas[linha, coluna];
         }
 
         public Peca peca(Posicao posicao)
         {
-            return this.pecas[posicao.linha, posicao.coluna];
+            return pecas[posicao.linha, posicao.coluna];
         }
 
         public bool ExistePeca(Posicao posicao)
