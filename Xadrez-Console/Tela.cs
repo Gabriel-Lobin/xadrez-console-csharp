@@ -5,7 +5,7 @@ namespace xadrez_console
     internal class Tela
     {
         private static char quadrado = '\u25A1';
-        public static void imprimirTabuleiro(Tabuleiro tabuleiro)
+        public static void ImprimirTabuleiro(Tabuleiro tabuleiro)
         {
             for (int index = 0; index < tabuleiro.linhas; index++)
             {
