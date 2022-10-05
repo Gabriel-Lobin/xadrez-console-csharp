@@ -21,6 +21,28 @@
             qtdMovimentos++;
         }
 
+        public bool ExisteMovimentosPossiveis()
+        {
+            bool[,] matriz = MovimentosValidos();
+
+            for (int index = 0; index < tabuleiro.linhas; index++)
+            {
+                for (int index2 = 0; index2 < tabuleiro.colunas; index2++)
+                {
+                    if (matriz[index, index2])
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+        public bool PodeMoverPara(Posicao posicao)
+        {
+            return MovimentosValidos()[posicao.linha, posicao.coluna];
+        }
+
         public abstract bool[,] MovimentosValidos();
 
     }

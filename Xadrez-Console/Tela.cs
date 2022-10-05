@@ -5,7 +5,7 @@ namespace xadrez_console
 {
     internal class Tela
     {
-        private static char quadrado = '\u25A1';
+        private static char quadrado = '\u2022';
         public static void ImprimirTabuleiro(Tabuleiro tabuleiro)
         {
             for (int index = 0; index < tabuleiro.linhas; index++)
@@ -17,7 +17,7 @@ namespace xadrez_console
                 }
                 Console.WriteLine();
             }
-            // Console.WriteLine("  ' ' ' ' ' ' ' '");
+
             Console.WriteLine("  A B C D E F G H");
         }
 
@@ -43,7 +43,7 @@ namespace xadrez_console
                 }
                 Console.WriteLine();
             }
-            // Console.WriteLine("  ' ' ' ' ' ' ' '");
+
             Console.WriteLine("  A B C D E F G H");
             Console.BackgroundColor = fundoOriginal;
         }
