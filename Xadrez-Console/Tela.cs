@@ -13,20 +13,39 @@ namespace xadrez_console
                 Console.Write($"{8 - index}-");
                 for (int index2 = 0; index2 < tabuleiro.colunas; index2++)
                 {
-                    if (tabuleiro.peca(index, index2) == null)
-                    {
-                        Console.Write($"{quadrado} ");
-                    }
-                    else
-                    {
-                        Tela.ImprimirPeca(tabuleiro.peca(index, index2));
-                        Console.Write(" ");
-                    }
+                    Tela.ImprimirPeca(tabuleiro.peca(index, index2));
                 }
                 Console.WriteLine();
             }
-            Console.WriteLine("  ' ' ' ' ' ' ' '");
+            // Console.WriteLine("  ' ' ' ' ' ' ' '");
             Console.WriteLine("  A B C D E F G H");
+        }
+
+        public static void ImprimirTabuleiro(Tabuleiro tabuleiro, bool[,] posicoes)
+        {
+            ConsoleColor fundoOriginal = Console.BackgroundColor;
+            ConsoleColor fundoMarcado = ConsoleColor.DarkGray;
+
+            for (int index = 0; index < tabuleiro.linhas; index++)
+            {
+                Console.Write($"{8 - index}-");
+                for (int index2 = 0; index2 < tabuleiro.colunas; index2++)
+                {
+                    if (posicoes[index, index2])
+                    {
+                        Console.BackgroundColor = fundoMarcado;
+                    }
+                    else
+                    {
+                        Console.BackgroundColor = fundoOriginal;
+                    }
+                    Tela.ImprimirPeca(tabuleiro.peca(index, index2));
+                }
+                Console.WriteLine();
+            }
+            // Console.WriteLine("  ' ' ' ' ' ' ' '");
+            Console.WriteLine("  A B C D E F G H");
+            Console.BackgroundColor = fundoOriginal;
         }
 
         public static PosicaoXadrez LerPosicaoXadrez()
@@ -39,16 +58,24 @@ namespace xadrez_console
 
         public static void ImprimirPeca(Peca peca)
         {
-            if (peca.cor == Cor.Branca)
+            if (peca == null)
             {
-                Console.Write(peca);
+                Console.Write($"{quadrado} ");
             }
             else
             {
-                ConsoleColor corPadrao = Console.ForegroundColor;
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.Write(peca);
-                Console.ForegroundColor = corPadrao;
+                if (peca.cor == Cor.Branca)
+                {
+                    Console.Write(peca);
+                }
+                else
+                {
+                    ConsoleColor corPadrao = Console.ForegroundColor;
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.Write(peca);
+                    Console.ForegroundColor = corPadrao;
+                }
+                Console.Write(" ");
             }
         }
     }
