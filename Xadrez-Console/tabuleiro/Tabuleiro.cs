@@ -16,5 +16,11 @@
         {
             return this.pecas[linha, coluna];
         }
+
+        public void colocarPeca(Peca peca, Posicao posicao)
+        {
+            this.pecas[posicao.linha, posicao.coluna] = peca;
+            peca.posicao = posicao;
+        }
     }
 }

@@ -4,7 +4,7 @@ namespace xadrez_console
 {
     internal class Tela
     {
-        private static char tabuleiroVazio = '\u25A1';
+        private static char quadrado = '\u25A1';
         public static void imprimirTabuleiro(Tabuleiro tabuleiro)
         {
             for (int index = 0; index < tabuleiro.linhas; index++)
@@ -13,7 +13,7 @@ namespace xadrez_console
                 {
                     if (tabuleiro.peca(index, index2) == null)
                     {
-                        Console.Write($"{tabuleiroVazio} ");
+                        Console.Write($"{quadrado} ");
                     }
                     else
                     {
