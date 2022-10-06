@@ -39,13 +39,14 @@ namespace xadrez_console
                         partida.RealizaJogada(origem, destino);
 
                     }
-                    catch(TabuleiroException erro)
+                    catch (TabuleiroException erro)
                     {
                         Console.WriteLine(erro.Message);
                         Console.ReadLine();
                     }
                 }
-
+                Console.Clear();
+                Tela.ImprimirPartida(partida);
             }
             catch (TabuleiroException erro)
             {

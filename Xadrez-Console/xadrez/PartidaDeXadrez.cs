@@ -73,8 +73,16 @@ namespace xadrez_console.xadrez
                 xeque = false;
             }
 
-            turno++;
-            MudaJogador();
+            if (TesteXequeMate(Adversario(jogadorAtual)))
+            {
+                terminada = true;
+            }
+            else
+            {
+                turno++;
+                MudaJogador();
+            }
+
         }
 
         public void ValidarPosicaoOrigem(Posicao posicao)
@@ -187,6 +195,39 @@ namespace xadrez_console.xadrez
             }
 
             return false;
+        }
+
+        public bool TesteXequeMate(Cor cor)
+        {
+            if (!EstaEmXeque(cor))
+            {
+                return false;
+            }
+
+            foreach (Peca p in PecasEmJogoLista(cor))
+            {
+                bool[,] matriz = p.MovimentosValidos();
+                for (int index = 0; index < tabuleiro.linhas; index++)
+                {
+                    for (int index2 = 0; index2 < tabuleiro.colunas; index2++)
+                    {
+                        if (matriz[index, index2])
+                        {
+                            Posicao origem = p.posicao;
+                            Posicao destino = new Posicao(index, index2);
+                            Peca pecaComida = ExecuteMovimento(origem, destino);
+                            bool testeXeque = EstaEmXeque(cor);
+                            DesfazMovimento(origem, destino, pecaComida);
+
+                            if (!testeXeque)
+                            {
+                                return false;
+                            }
+                        }
+                    }
+                }
+            }
+            return true;
         }
 
         public void ColocarNovaPeca(char coluna, int linha, Peca peca)
