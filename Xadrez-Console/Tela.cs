@@ -44,10 +44,10 @@ namespace xadrez_console
                 }
                 else
                 {
-                    // ConsoleColor corPadrao = Console.ForegroundColor;
-                    // Console.ForegroundColor = ConsoleColor.Red;
+                    ConsoleColor corPadrao = Console.ForegroundColor;
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.Write($"{p} ");
-                    // Console.ForegroundColor = corPadrao;
+                    Console.ForegroundColor = corPadrao;
                 }
             }
             Console.Write("]");
