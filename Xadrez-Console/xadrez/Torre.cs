@@ -15,6 +15,16 @@ namespace xadrez_console.xadrez
         {
             return $"{torre}";
         }
+
+        public override string PecaBranca()
+        {
+            return $"{torreBranca}";
+        }
+        public override string PecaPreta()
+        {
+            return $"{torrePreta}";
+        }
+
         private bool PodeMover(Posicao posicao)
         {
             Peca peca = this.tabuleiro.peca(posicao);

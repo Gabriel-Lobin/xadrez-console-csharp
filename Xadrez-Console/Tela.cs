@@ -6,11 +6,59 @@ namespace xadrez_console
     internal class Tela
     {
         private static char quadrado = '\u2022';
+
+        public static void ImprimirPartida(PartidaDeXadrez partida)
+        {
+            Tela.ImprimirTabuleiro(partida.tabuleiro);
+            Console.WriteLine();
+            ImprimirPecasCapturadas(partida);
+            Console.WriteLine();
+            Console.WriteLine($"Turno: {partida.turno}");
+            Console.WriteLine($"Aguardando jogada: {partida.jogadorAtual}");
+
+        }
+
+        public static void ImprimirPecasCapturadas(PartidaDeXadrez partida)
+        {
+            Console.WriteLine("Peças capturadas: ");
+            Console.Write("Brancas: ");
+            ImprimirConjunto(partida.PecasComidasLista(Cor.Branca));
+            Console.WriteLine();
+            Console.Write("Pretas: ");
+
+            ImprimirConjunto(partida.PecasComidasLista(Cor.Preta));
+
+            Console.WriteLine();
+
+        }
+
+        public static void ImprimirConjunto(HashSet<Peca> conjunto)
+        {
+
+            Console.Write("[");
+            foreach (Peca p in conjunto)
+            {
+                if (p.cor == Cor.Branca)
+                {
+                    Console.Write($"{p} ");
+                }
+                else
+                {
+                    // ConsoleColor corPadrao = Console.ForegroundColor;
+                    // Console.ForegroundColor = ConsoleColor.Red;
+                    Console.Write($"{p} ");
+                    // Console.ForegroundColor = corPadrao;
+                }
+            }
+            Console.Write("]");
+
+        }
+
         public static void ImprimirTabuleiro(Tabuleiro tabuleiro)
         {
             for (int index = 0; index < tabuleiro.linhas; index++)
             {
-                Console.Write($"{8 - index}-");
+                Console.Write($"{8 - index} ");
                 for (int index2 = 0; index2 < tabuleiro.colunas; index2++)
                 {
                     Tela.ImprimirPeca(tabuleiro.peca(index, index2));
@@ -24,11 +72,11 @@ namespace xadrez_console
         public static void ImprimirTabuleiro(Tabuleiro tabuleiro, bool[,] posicoes)
         {
             ConsoleColor fundoOriginal = Console.BackgroundColor;
-            ConsoleColor fundoMarcado = ConsoleColor.DarkGray;
+            ConsoleColor fundoMarcado = ConsoleColor.Yellow;
 
             for (int index = 0; index < tabuleiro.linhas; index++)
             {
-                Console.Write($"{8 - index}-");
+                Console.Write($"{8 - index} ");
                 for (int index2 = 0; index2 < tabuleiro.colunas; index2++)
                 {
                     if (posicoes[index, index2])
@@ -71,7 +119,7 @@ namespace xadrez_console
                 else
                 {
                     ConsoleColor corPadrao = Console.ForegroundColor;
-                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.Write(peca);
                     Console.ForegroundColor = corPadrao;
                 }

@@ -7,7 +7,6 @@
         public int qtdMovimentos { get; protected set; }
         public Tabuleiro tabuleiro { get; protected set; }
 
-
         public Peca(Tabuleiro tabuleiro, Cor cor)
         {
             this.posicao = null;
@@ -15,6 +14,10 @@
             this.cor = cor;
             this.qtdMovimentos = 0;
         }
+
+        public abstract string PecaBranca();
+
+        public abstract string PecaPreta();
 
         public void AumentaQtdMovimentos()
         {

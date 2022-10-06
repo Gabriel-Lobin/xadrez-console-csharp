@@ -10,7 +10,7 @@ namespace xadrez_console
         {
             try
             {
-                Console.OutputEncoding = System.Text.Encoding.UTF8;
+                Console.OutputEncoding = System.Text.Encoding.Unicode;
                 PartidaDeXadrez partida = new PartidaDeXadrez();
 
                 while (!partida.terminada)
@@ -18,11 +18,7 @@ namespace xadrez_console
                     try
                     {
                         Console.Clear();
-                        Tela.ImprimirTabuleiro(partida.tabuleiro);
-
-                        Console.WriteLine();
-                        Console.WriteLine($"Turno: {partida.turno}");
-                        Console.WriteLine($"Aguardando jogada: {partida.jogadorAtual}");
+                        Tela.ImprimirPartida(partida);
 
                         Console.WriteLine();
 
