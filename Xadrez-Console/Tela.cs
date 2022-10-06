@@ -80,8 +80,7 @@ namespace xadrez_console
                 }
                 Console.WriteLine();
             }
-
-            Console.WriteLine("  A B C D E F G H");
+            Console.WriteLine("  a b c d e f g h");
         }
 
         public static void ImprimirTabuleiro(Tabuleiro tabuleiro, bool[,] posicoes)
@@ -103,11 +102,12 @@ namespace xadrez_console
                         Console.BackgroundColor = fundoOriginal;
                     }
                     Tela.ImprimirPeca(tabuleiro.peca(index, index2));
+                    Console.BackgroundColor = fundoOriginal;
                 }
                 Console.WriteLine();
             }
 
-            Console.WriteLine("  A B C D E F G H");
+            Console.WriteLine("  a b c d e f g h");
             Console.BackgroundColor = fundoOriginal;
         }
 

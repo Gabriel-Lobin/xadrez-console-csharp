@@ -49,7 +49,7 @@ namespace xadrez_console.xadrez
                     break;
                 }
 
-                posicaoInicial.linha -= 1;
+                posicaoInicial.DefinirValores(posicaoInicial.linha - 1, posicao.coluna);
             }
 
             // S
@@ -65,7 +65,7 @@ namespace xadrez_console.xadrez
                     break;
                 }
 
-                posicaoInicial.linha += 1;
+                posicaoInicial.DefinirValores(posicaoInicial.linha + 1, posicao.coluna);
             }
 
             // L 
@@ -80,7 +80,7 @@ namespace xadrez_console.xadrez
                     break;
                 }
 
-                posicaoInicial.coluna += 1;
+                posicaoInicial.DefinirValores(posicaoInicial.linha, posicao.coluna + 1);
             }
             // O 
             posicaoInicial.DefinirValores(posicao.linha, posicao.coluna - 1);
@@ -94,7 +94,7 @@ namespace xadrez_console.xadrez
                     break;
                 }
 
-                posicaoInicial.coluna -= 1;
+                posicaoInicial.DefinirValores(posicaoInicial.linha, posicao.coluna - 1);
             }
 
             // NO

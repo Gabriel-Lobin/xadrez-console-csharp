@@ -7,8 +7,11 @@ namespace xadrez_console.xadrez
         private string rei = "R";
         private char reiBranco = '\u2654';
         private char reiPreto = '\u265A';
-        public Rei(Tabuleiro tabuleiro, Cor cor) : base(tabuleiro, cor)
+
+        private PartidaDeXadrez partida;
+        public Rei(Tabuleiro tabuleiro, Cor cor, PartidaDeXadrez partida) : base(tabuleiro, cor)
         {
+            this.partida = partida;
         }
 
         public override string ToString()
@@ -30,6 +33,12 @@ namespace xadrez_console.xadrez
         {
             Peca peca = tabuleiro.peca(posicao);
             return peca == null || peca.cor != cor;
+        }
+
+        private bool TesteTorreRoque(Posicao posicao)
+        {
+            Peca p = tabuleiro.peca(posicao);
+            return p != null && p is Torre && p.cor == cor && p.qtdMovimentos == 0;
         }
 
         public override bool[,] MovimentosValidos()
@@ -93,6 +102,40 @@ namespace xadrez_console.xadrez
             if (tabuleiro.PosicaoValida(posicaoInicial) && PodeMover(posicaoInicial))
             {
                 matriz[posicaoInicial.linha, posicaoInicial.coluna] = true;
+            }
+
+            // ESPECIAIS
+            // ROQUE
+            if (qtdMovimentos == 0 && !partida.xeque)
+            {
+                // pequena
+                Posicao posicao1 = new Posicao(posicao.linha, posicao.coluna + 3);
+
+                if (TesteTorreRoque(posicao1))
+                {
+                    Posicao p1 = new Posicao(posicao.linha, posicao.coluna + 1);
+                    Posicao p2 = new Posicao(posicao.linha, posicao.coluna + 2);
+
+                    if (tabuleiro.peca(p1) == null && tabuleiro.peca(p2) == null)
+                    {
+                        matriz[posicao.linha, posicao.coluna + 2] = true;
+                    }
+                }
+
+                // grande
+                Posicao posicao2 = new Posicao(posicao.linha, posicao.coluna - 4);
+
+                if (TesteTorreRoque(posicao2))
+                {
+                    Posicao p1 = new Posicao(posicao.linha, posicao.coluna - 1);
+                    Posicao p2 = new Posicao(posicao.linha, posicao.coluna - 2);
+                    Posicao p3 = new Posicao(posicao.linha, posicao.coluna - 3);
+
+                    if (tabuleiro.peca(p1) == null && tabuleiro.peca(p2) == null && tabuleiro.peca(p3) == null)
+                    {
+                        matriz[posicao.linha, posicao.coluna - 2] = true;
+                    }
+                }
             }
 
             return matriz;

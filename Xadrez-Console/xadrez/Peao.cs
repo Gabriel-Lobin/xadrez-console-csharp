@@ -60,14 +60,14 @@ namespace xadrez_console.xadrez
 
                 posicaoInicial.DefinirValores(posicao.linha - 1, posicao.coluna - 1);
 
-                if (tabuleiro.PosicaoValida(posicaoInicial) && Livre(posicaoInicial))
+                if (tabuleiro.PosicaoValida(posicaoInicial) && ExisteInimigo(posicaoInicial))
                 {
                     matriz[posicaoInicial.linha, posicaoInicial.coluna] = true;
                 }
 
                 posicaoInicial.DefinirValores(posicao.linha - 1, posicao.coluna + 1);
 
-                if (tabuleiro.PosicaoValida(posicaoInicial) && Livre(posicaoInicial))
+                if (tabuleiro.PosicaoValida(posicaoInicial) && ExisteInimigo(posicaoInicial))
                 {
                     matriz[posicaoInicial.linha, posicaoInicial.coluna] = true;
                 }
@@ -90,14 +90,14 @@ namespace xadrez_console.xadrez
 
                 posicaoInicial.DefinirValores(posicao.linha + 1, posicao.coluna - 1);
 
-                if (tabuleiro.PosicaoValida(posicaoInicial) && Livre(posicaoInicial))
+                if (tabuleiro.PosicaoValida(posicaoInicial) && ExisteInimigo(posicaoInicial))
                 {
                     matriz[posicaoInicial.linha, posicaoInicial.coluna] = true;
                 }
 
                 posicaoInicial.DefinirValores(posicao.linha + 1, posicao.coluna + 1);
 
-                if (tabuleiro.PosicaoValida(posicaoInicial) && Livre(posicaoInicial))
+                if (tabuleiro.PosicaoValida(posicaoInicial) && ExisteInimigo(posicaoInicial))
                 {
                     matriz[posicaoInicial.linha, posicaoInicial.coluna] = true;
                 }
